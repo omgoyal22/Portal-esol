@@ -1,25 +1,47 @@
 import React from 'react';
-import './Home.css'; // We'll create this CSS file
+import './Home.css';
 
 const Home = () => {
   return (
-    <>
-      <div className="space-tunnel">
-        {[...Array(8)].map((_, i) => (
-          <div key={i} className="cube-frame"></div>
+    <div className="homepage">
+      {/* 🔥 Background video */}
+      <video autoPlay muted loop playsInline className="bg-video">
+        <source
+          src="https://jetonbucket.fra1.cdn.digitaloceanspaces.com/jeton/2024-08-08T10-52-53.656Z-jeton-homepage-mobile2.mp4#t=0.01"
+          type="video/mp4"
+        />
+      </video>
+
+      <header className="header">
+        <div className="logo">Jeton</div>
+        <div className="auth-buttons">
+          <button className="login">Log in</button>
+          <button className="signup">Sign up</button>
+        </div>
+      </header>
+
+      {/* <div className="animated-coins">
+        {[...Array(14)].map((_, i) => (
+          <div
+            key={i}
+            className="coin"
+            style={{
+              animationDelay: `${i * 0.3}s`,
+              transform: `translate3d(${(Math.random() - 0.5) * 600}px, ${(Math.random() - 0.5) * 600}px, 0)`,
+            }}
+          />
         ))}
-      </div>
+      </div> */}
 
-      <div className="description-container">
-        <div className="title"></div>
-        <div className="subtitle"></div>
+      <div className="content">
+        <h1>One app for all needs</h1>
+        <p>Single account for all your payments.</p>
+        <div className="store-buttons">
+          <button className="store apple"> App Store</button>
+          <button className="store google">▶ Google Play</button>
+        </div>
       </div>
-
-      <div className="author-container">
-        <div className="picture"></div>
-        <div className="title"></div>
-      </div>
-    </>
+    </div>
   );
 };
 

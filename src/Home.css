@@ -1,94 +1,134 @@
-.space-tunnel {
-  position: absolute;
-  left: 0;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100%;
+}
+
+.homepage {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3, #feb47b);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+/* 🔥 Video background */
+.bg-video {
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background: #000;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.4); /* Dim video for readability */
 }
 
-.cube-frame {
+.header {
   position: absolute;
-  width: 100px;
-  height: 100px;
-  top: calc(50% - 50px);
-  left: calc(50% - 50px);
-  border: 2px solid rgba(128, 255, 255, 0.6);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), 0 0 60px rgba(0, 128, 255, 0.2);
-  mix-blend-mode: screen;
-  filter: drop-shadow(2px 0 red) drop-shadow(-2px 0 blue);
-  animation: fly 3s linear infinite;
+  top: 20px;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 22px;
+  padding: 0 32px;
+  z-index: 1;
 }
 
-.cube-frame:nth-child(1) { animation-delay: 0s; }
-.cube-frame:nth-child(2) { animation-delay: 0.375s; }
-.cube-frame:nth-child(3) { animation-delay: 0.75s; }
-.cube-frame:nth-child(4) { animation-delay: 1.125s; }
-.cube-frame:nth-child(5) { animation-delay: 1.5s; }
-.cube-frame:nth-child(6) { animation-delay: 1.875s; }
-.cube-frame:nth-child(7) { animation-delay: 2.25s; }
-.cube-frame:nth-child(8) { animation: none !important; }
+.auth-buttons button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: white;
+  margin-left: 20px;
+  cursor: pointer;
+}
 
-@keyframes fly {
+.signup {
+  background: white;
+  color: red;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.animated-coins {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 1000px;
+  z-index: 1;
+}
+
+.coin {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffdbdb, #ff4b4b);
+  position: absolute;
+  animation: spinCoin 3s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes spinCoin {
   0% {
-    transform: translateZ(600px) scale(0.1) rotate(0deg);
-    opacity: 0;
-  }
-  25% {
-    opacity: 1;
+    transform: translateZ(0) rotateX(0deg);
   }
   100% {
-    transform: translateZ(-800px) scale(2.5) rotate(360deg);
-    opacity: 0;
+    transform: translateZ(-500px) rotateX(360deg);
   }
 }
 
-.description-container {
-  position: absolute;
-  top: 32px;
-  left: 32px;
+.content {
   text-align: left;
-  letter-spacing: 3px;
-}
-
-.description-container .title {
-  font-size: 19px;
-  font-weight: 500;
+  z-index: 1;
+  max-width: 600px;
+  padding: 20px;
   color: white;
-  text-transform: uppercase;
+  position: relative;
 }
 
-.description-container .subtitle {
-  margin-top: 6px;
-  font-size: 26px;
-  font-weight: 500;
-  color: magenta;
-  text-transform: uppercase;
+.content h1 {
+  font-size: 56px;
+  font-weight: bold;
+  margin: 0;
 }
 
-.author-container {
-  position: absolute;
-  width: 50%;
-  right: 21px;
-  bottom: 21px;
-  text-align: right;
+.content p {
+  font-size: 22px;
+  margin-top: 10px;
+  margin-bottom: 24px;
 }
 
-.author-container .picture {
-  position: absolute;
-  right: 0;
-  top: -42px;
-  margin-top: -12px;
-  width: 42px;
-  height: 42px;
-  background-size: 42px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image: url('https://assets.codepen.io/595576/internal/avatars/users/default.png?format=auto&version=1689877807&width=80&height=80');
+.store-buttons {
+  display: flex;
+  gap: 20px;
 }
 
-.author-container .title {
-  font-size: 16px;
-  letter-spacing: 2px;
-  color: white;
+.store {
+  background: white;
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.store.apple {
+  font-family: 'Arial', sans-serif;
+}
+
+.store.google {
+  font-family: 'Arial', sans-serif;
 }
