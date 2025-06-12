@@ -7,7 +7,7 @@ const Home = () => {
       {/* 🔥 Background video */}
       <video autoPlay muted loop playsInline className="bg-video">
         <source
-          src="https://jetonbucket.fra1.cdn.digitaloceanspaces.com/jeton/2024-08-08T10-52-53.656Z-jeton-homepage-mobile2.mp4#t=0.01"
+          src="https://res.cloudinary.com/daijmfcpa/video/upload/v1749720714/video_vowpqc.mp4"
           type="video/mp4"
         />
       </video>

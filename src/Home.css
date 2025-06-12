@@ -11,7 +11,7 @@ html {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3, #feb47b);
+  /* background: linear-gradient(135deg, #ff758c, #ff7eb3, #feb47b); */
   display: flex;
   flex-direction: column;
   justify-content: center;
