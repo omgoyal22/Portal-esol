@@ -1,10 +1,38 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import projects from '../data/project';
+import projects from '../data/project'; // Ensure this file contains project data.
 
-const Card = ({ i, title, description, src, link, color, progress, range, targetScale }) => {
+const Card = ({ i, title, description, src, link, color, progress, totalCards }) => {
   const container = useRef(null);
-  const scale = useTransform(progress, range, [1, targetScale]);
+
+  const cardStart = i / (totalCards + 1);
+  const cardPeak = (i + 0.5) / (totalCards + 1);
+  const cardEnd = (i + 1) / (totalCards + 1);
+
+  const scale = useTransform(progress, 
+    [cardStart, cardPeak, cardEnd], 
+    [0.5, 1, 0.8]
+  );
+
+  const opacity = useTransform(progress, 
+    [cardStart, cardPeak, cardEnd], 
+    [0, 1, 0]
+  );
+
+  const getExitTransform = (index) => {
+    const movements = [
+      { x: 200, y: -100 },
+      { x: -200, y: -100 },
+      { x: 200, y: 100 },
+      { x: -200, y: 100 },
+      { x: 0, y: -200 },
+    ];
+    return movements[index % movements.length];
+  };
+
+  const movement = getExitTransform(i);
+  const x = useTransform(progress, [cardPeak, cardEnd], [0, movement.x]);
+  const y = useTransform(progress, [cardPeak, cardEnd], [0, movement.y]);
 
   return (
     <div 
@@ -16,7 +44,8 @@ const Card = ({ i, title, description, src, link, color, progress, range, target
         alignItems: 'center',
         justifyContent: 'center',
         position: 'sticky',
-        top: 0
+        top: 0,
+        zIndex: totalCards - i
       }}
     >
       <motion.div
@@ -24,26 +53,29 @@ const Card = ({ i, title, description, src, link, color, progress, range, target
         style={{
           backgroundColor: color,
           scale,
-          top: `calc(-5vh + ${i * 25}px)`,
-          width: '1000px',
+          opacity,
+          x,
+          y,
+          width: '900px',
           height: '500px',
           borderRadius: '25px',
           position: 'relative',
           padding: '50px',
           display: 'flex',
           flexDirection: 'column',
-          transformOrigin: 'top'
+          transformOrigin: 'center',
+          boxShadow: '0 25px 50px rgba(0,0,0,0.4)'
         }}
       >
         <h2 style={{
           color: 'white',
-          fontSize: '2rem',
-          margin: '0 0 20px 0',
-          fontWeight: '600'
+          fontSize: '2.5rem',
+          margin: '0 0 30px 0',
+          fontWeight: '700'
         }}>
           {title}
         </h2>
-        
+
         <div className="body" style={{
           display: 'flex',
           gap: '50px',
@@ -57,14 +89,15 @@ const Card = ({ i, title, description, src, link, color, progress, range, target
           }}>
             <p style={{
               color: 'white',
-              fontSize: '1rem',
-              lineHeight: '1.6',
-              margin: 0
+              fontSize: '1.2rem',
+              lineHeight: '1.7',
+              margin: 0,
+              opacity: 0.9
             }}>
               {description}
             </p>
-            
-            <div style={{ marginTop: '20px' }}>
+
+            <div style={{ marginTop: '30px' }}>
               <a 
                 href={link} 
                 target="_blank" 
@@ -72,26 +105,37 @@ const Card = ({ i, title, description, src, link, color, progress, range, target
                 style={{
                   color: 'white',
                   textDecoration: 'none',
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   gap: '10px',
-                  fontSize: '0.9rem'
+                  fontSize: '1.1rem',
+                  padding: '12px 24px',
+                  border: '2px solid white',
+                  borderRadius: '30px',
+                  transition: 'all 0.3s ease',
+                  fontWeight: '500'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.backgroundColor = 'white';
+                  e.target.style.color = color;
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.backgroundColor = 'transparent';
+                  e.target.style.color = 'white';
                 }}
               >
-                See more
-                <svg width="22" height="12" viewBox="0 0 22 12" fill="none">
-                  <path d="M21.5303 6.53033C21.8232 6.23744 21.8232 5.76256 21.5303 5.46967L16.7574 0.696699C16.4645 0.403806 15.9896 0.403806 15.6967 0.696699C15.4038 0.989592 15.4038 1.46447 15.6967 1.75736L19.9393 6L15.6967 10.2426C15.4038 10.5355 15.4038 11.0104 15.6967 11.3033C15.9896 11.5962 16.4645 11.5962 16.7574 11.3033L21.5303 6.53033ZM0 6.75L21 6.75V5.25L0 5.25L0 6.75Z" fill="white"/>
-                </svg>
+                See More →
               </a>
             </div>
           </div>
-          
+
           <div className="image-container" style={{
             width: '300px',
             height: '250px',
             position: 'relative',
-            borderRadius: '15px',
-            overflow: 'hidden'
+            borderRadius: '20px',
+            overflow: 'hidden',
+            boxShadow: '0 15px 30px rgba(0,0,0,0.3)'
           }}>
             <img
               src={src}
@@ -109,6 +153,66 @@ const Card = ({ i, title, description, src, link, color, progress, range, target
   );
 };
 
+const FinalText = ({ progress, totalCards }) => {
+  const textStart = totalCards / (totalCards + 1);
+  const textEnd = 1;
+
+  const scale = useTransform(progress, [textStart, textEnd], [0.5, 1]);
+  const opacity = useTransform(progress, [textStart, textEnd], [0, 1]);
+  const y = useTransform(progress, [textStart, textEnd], [100, 0]);
+
+  return (
+    <div style={{
+      height: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'sticky',
+      top: 0,
+      zIndex: 0
+    }}>
+      <motion.div
+        style={{
+          scale,
+          opacity,
+          y,
+          textAlign: 'center'
+        }}
+      >
+        <h1 style={{
+          color: 'white',
+          fontSize: '5rem',
+          fontWeight: '800',
+          margin: 0,
+          background: 'linear-gradient(45deg, #3B82F6, #EF4444, #10B981, #8B5CF6, #F59E0B)',
+          backgroundSize: '400% 400%',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          animation: 'gradient 3s ease infinite'
+        }}>
+          Our Partners
+        </h1>
+        <p style={{
+          color: 'rgba(255,255,255,0.7)',
+          fontSize: '1.5rem',
+          marginTop: '30px',
+          fontWeight: '300'
+        }}>
+          Building the future together
+        </p>
+      </motion.div>
+
+      <style jsx>{`
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 const StackedCards = () => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -118,31 +222,35 @@ const StackedCards = () => {
 
   return (
     <div style={{ 
-      backgroundColor: '#1a1a1a',
+      backgroundColor: '#0f0f0f',
       minHeight: '100vh'
     }}>
       <main 
         ref={container} 
         style={{
-          position: 'relative'
+          position: 'relative',
+          height: `${(projects.length + 1) * 100}vh`
         }}
       >
-        {projects.map((project, i) => {
-          const targetScale = 1 - ((projects.length - i) * 0.05);
-          return (
-            <Card
-              key={`p_${i}`}
-              i={i}
-              {...project}
-              progress={scrollYProgress}
-              range={[i * 0.25, 1]}
-              targetScale={targetScale}
-            />
-          );
-        })}
+        {projects.map((project, i) => (
+          <Card
+            key={`card_${i}`}
+            i={i}
+            {...project}
+            progress={scrollYProgress}
+            totalCards={projects.length}
+          />
+        ))}
+
+        <FinalText 
+          progress={scrollYProgress}
+          totalCards={projects.length}
+        />
       </main>
     </div>
   );
 };
 
 export default StackedCards;
+
+
