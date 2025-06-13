@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import projects from '../data/project'; // Ensure this file contains project data.
+import projects from '../data/project';
 
 const Card = ({ i, title, description, src, link, color, progress, totalCards }) => {
   const container = useRef(null);
@@ -9,15 +9,8 @@ const Card = ({ i, title, description, src, link, color, progress, totalCards })
   const cardPeak = (i + 0.5) / (totalCards + 1);
   const cardEnd = (i + 1) / (totalCards + 1);
 
-  const scale = useTransform(progress, 
-    [cardStart, cardPeak, cardEnd], 
-    [0.5, 1, 0.8]
-  );
-
-  const opacity = useTransform(progress, 
-    [cardStart, cardPeak, cardEnd], 
-    [0, 1, 0]
-  );
+  const scale = useTransform(progress, [cardStart, cardPeak, cardEnd], [0.5, 1, 0.8]);
+  const opacity = useTransform(progress, [cardStart, cardPeak, cardEnd], [0, 1, 0]);
 
   const getExitTransform = (index) => {
     const movements = [
@@ -35,8 +28,8 @@ const Card = ({ i, title, description, src, link, color, progress, totalCards })
   const y = useTransform(progress, [cardPeak, cardEnd], [0, movement.y]);
 
   return (
-    <div 
-      ref={container} 
+    <div
+      ref={container}
       className="card-container"
       style={{
         height: '100vh',
@@ -56,21 +49,21 @@ const Card = ({ i, title, description, src, link, color, progress, totalCards })
           opacity,
           x,
           y,
-          width: '900px',
-          height: '500px',
-          borderRadius: '25px',
+          width: '500px',
+          height: '320px',
+          borderRadius: '20px',
           position: 'relative',
-          padding: '50px',
+          padding: '25px',
           display: 'flex',
           flexDirection: 'column',
           transformOrigin: 'center',
-          boxShadow: '0 25px 50px rgba(0,0,0,0.4)'
+          boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
         }}
       >
         <h2 style={{
           color: 'white',
-          fontSize: '2.5rem',
-          margin: '0 0 30px 0',
+          fontSize: '1.6rem',
+          margin: '0 0 15px 0',
           fontWeight: '700'
         }}>
           {title}
@@ -78,7 +71,7 @@ const Card = ({ i, title, description, src, link, color, progress, totalCards })
 
         <div className="body" style={{
           display: 'flex',
-          gap: '50px',
+          gap: '20px',
           height: '100%'
         }}>
           <div className="description" style={{
@@ -89,29 +82,29 @@ const Card = ({ i, title, description, src, link, color, progress, totalCards })
           }}>
             <p style={{
               color: 'white',
-              fontSize: '1.2rem',
-              lineHeight: '1.7',
+              fontSize: '1rem',
+              lineHeight: '1.5',
               margin: 0,
               opacity: 0.9
             }}>
               {description}
             </p>
 
-            <div style={{ marginTop: '30px' }}>
-              <a 
-                href={link} 
-                target="_blank" 
+            <div style={{ marginTop: '15px' }}>
+              <a
+                href={link}
+                target="_blank"
                 rel="noopener noreferrer"
                 style={{
                   color: 'white',
                   textDecoration: 'none',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '10px',
-                  fontSize: '1.1rem',
-                  padding: '12px 24px',
+                  gap: '8px',
+                  fontSize: '0.95rem',
+                  padding: '8px 16px',
                   border: '2px solid white',
-                  borderRadius: '30px',
+                  borderRadius: '20px',
                   transition: 'all 0.3s ease',
                   fontWeight: '500'
                 }}
@@ -130,12 +123,12 @@ const Card = ({ i, title, description, src, link, color, progress, totalCards })
           </div>
 
           <div className="image-container" style={{
-            width: '300px',
-            height: '250px',
+            width: '180px',
+            height: '140px',
             position: 'relative',
-            borderRadius: '20px',
+            borderRadius: '12px',
             overflow: 'hidden',
-            boxShadow: '0 15px 30px rgba(0,0,0,0.3)'
+            boxShadow: '0 8px 16px rgba(0,0,0,0.3)'
           }}>
             <img
               src={src}
@@ -181,7 +174,7 @@ const FinalText = ({ progress, totalCards }) => {
       >
         <h1 style={{
           color: 'white',
-          fontSize: '5rem',
+          fontSize: '3rem',
           fontWeight: '800',
           margin: 0,
           background: 'linear-gradient(45deg, #3B82F6, #EF4444, #10B981, #8B5CF6, #F59E0B)',
@@ -194,8 +187,8 @@ const FinalText = ({ progress, totalCards }) => {
         </h1>
         <p style={{
           color: 'rgba(255,255,255,0.7)',
-          fontSize: '1.5rem',
-          marginTop: '30px',
+          fontSize: '1.2rem',
+          marginTop: '20px',
           fontWeight: '300'
         }}>
           Building the future together
@@ -221,12 +214,12 @@ const StackedCards = () => {
   });
 
   return (
-    <div style={{ 
+    <div style={{
       backgroundColor: '#0f0f0f',
       minHeight: '100vh'
     }}>
-      <main 
-        ref={container} 
+      <main
+        ref={container}
         style={{
           position: 'relative',
           height: `${(projects.length + 1) * 100}vh`
@@ -242,7 +235,7 @@ const StackedCards = () => {
           />
         ))}
 
-        <FinalText 
+        <FinalText
           progress={scrollYProgress}
           totalCards={projects.length}
         />
