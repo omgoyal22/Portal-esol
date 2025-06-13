@@ -1,45 +1,27 @@
 import React from 'react';
 import './Home.css';
 
-const Home = () => {
+const Home = ({ animate }) => {
   return (
-    <div className="homepage">
-      {/* 🔥 Background video */}
-      <video autoPlay muted loop playsInline className="bg-video">
+    <div className={`homepage ${animate ? '' : ''}`}>
+      <video autoPlay muted loop playsInline className={`bg-video ${animate ? 'video-fade-in' : ''}`}>
         <source
-          src="https://jetonbucket.fra1.cdn.digitaloceanspaces.com/jeton/2024-08-08T10-52-53.656Z-jeton-homepage-mobile2.mp4#t=0.01"
+          src="https://res.cloudinary.com/daijmfcpa/video/upload/v1749807349/videoplayback_xiykaz.mp4"
           type="video/mp4"
         />
       </video>
 
-      <header className="header">
-        <div className="logo">Jeton</div>
+      <header className={`header ${animate ? 'header-fade-in' : ''}`}>
+        <div className="logo">Alchemy.AI</div>
         <div className="auth-buttons">
           <button className="login">Log in</button>
           <button className="signup">Sign up</button>
         </div>
       </header>
 
-      {/* <div className="animated-coins">
-        {[...Array(14)].map((_, i) => (
-          <div
-            key={i}
-            className="coin"
-            style={{
-              animationDelay: `${i * 0.3}s`,
-              transform: `translate3d(${(Math.random() - 0.5) * 600}px, ${(Math.random() - 0.5) * 600}px, 0)`,
-            }}
-          />
-        ))}
-      </div> */}
-
-      <div className="content">
-        <h1>One app for all needs</h1>
-        <p>Single account for all your payments.</p>
-        <div className="store-buttons">
-          <button className="store apple"> App Store</button>
-          <button className="store google">▶ Google Play</button>
-        </div>
+      <div className={`content ${animate ? 'text-fade-in' : ''}`}>
+        <h1>Next-Gen Hiring. Today</h1>
+        <p>One solution From upskilling to hiring.</p>
       </div>
     </div>
   );

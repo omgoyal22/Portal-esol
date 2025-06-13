@@ -6,12 +6,59 @@ html {
   height: 100%;
 }
 
+/* Remove any video animation */
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 1; /* Show instantly */
+}
+
+/* Animate header */
+.header {
+  opacity: 0;
+  transform: translateY(50px);
+}
+.header-fade-in {
+  animation: headerFade 1s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes headerFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animate text */
+.content {
+  opacity: 0;
+  transform: translateY(50px);
+}
+.text-fade-in {
+  animation: textFade 1s ease-out forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes textFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 .homepage {
   position: relative;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3, #feb47b);
+  /* background: linear-gradient(135deg, #ff758c, #ff7eb3, #feb47b); */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +66,84 @@ html {
   z-index: 0;
 }
 
-/* 🔥 Video background */
+/* Initial hidden states */
+.bg-video,
+.header,
+.content {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* Animation container */
+.page-fade-in {
+  animation: pageFade 0.5s ease-in forwards;
+}
+
+@keyframes pageFade {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Video fades in */
+.video-fade-in {
+  animation: videoFadeIn 1.2s ease-in-out forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes videoFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header fades in next */
+.header-fade-in {
+  animation: headerFade 1s ease-in-out forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes headerFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Text appears last with delay */
+.text-fade-in {
+  animation: textFade 1s ease-in-out forwards;
+  animation-delay: 2s;
+}
+
+@keyframes textFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade-in effect when Home appears */
+.fade-in {
+  animation: fadeSlideIn 1.2s ease-out forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optional: smooth transitions for content */
+.content h1, .content p {
+  transition: all 0.8s ease-in-out;
+}
+
+🔥 Video background
 .bg-video {
   position: fixed;
   top: 0;
@@ -28,7 +152,7 @@ html {
   height: 100vh;
   object-fit: cover;
   z-index: -1;
-  filter: brightness(0.4); /* Dim video for readability */
+  /* filter: brightness(0.4); Dim video for readability */
 }
 
 .header {
@@ -61,40 +185,12 @@ html {
   font-weight: bold;
 }
 
-.animated-coins {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  perspective: 1000px;
-  z-index: 1;
-}
-
-.coin {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #ffdbdb, #ff4b4b);
-  position: absolute;
-  animation: spinCoin 3s linear infinite;
-  opacity: 0.8;
-}
-
-@keyframes spinCoin {
-  0% {
-    transform: translateZ(0) rotateX(0deg);
-  }
-  100% {
-    transform: translateZ(-500px) rotateX(360deg);
-  }
-}
-
 .content {
   text-align: left;
   z-index: 1;
   max-width: 600px;
   padding: 20px;
-  color: white;
+  color: #A4F6F9;
   position: relative;
 }
 
