@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Home from './Home.jsx';
-import StackedCards from './Components/StackedCards.jsx';
-import Loader from './Loader.jsx';
 import ScrollAnimation from './secondpage.jsx';
-
 function App() {
   const [loading, setLoading] = useState(true);
   const [showAnimation, setShowAnimation] = useState(false);
@@ -33,15 +30,9 @@ function App() {
 
   return (
     <div>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          {!scrolled && <Home animate={showAnimation} />}
-          <StackedCards />
-          <ScrollAnimation />
-        </>
-      )}
+      {/* <h1>hi</h1> */}
+      <Home />
+      <ScrollAnimation/>
     </div>
   );
 }
