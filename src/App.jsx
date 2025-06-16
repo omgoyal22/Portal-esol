@@ -32,7 +32,7 @@ function App() {
     <div>
       {/* <h1>hi</h1> */}
       <Home />
-      <ScrollAnimation/>
+      {/* <ScrollAnimation/> */}
     </div>
   );
 }
