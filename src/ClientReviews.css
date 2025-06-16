@@ -1,0 +1,75 @@
+.client-reviews-unfold {
+  padding: 100px 20px;
+  position: relative;
+  color: white;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  background: url('https://jeton.com/_ipx/w_1535/cms/b7c674ecd0ee69b2eca20443cac6272c550ed396-4000x2667.jpg') no-repeat center/cover;
+  filter: brightness(0.4);
+  z-index: -1;
+}
+
+.client-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 80px;
+  color: #fff;
+}
+
+.card-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.review-card {
+  width: 90%;
+  max-width: 650px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px);
+  border-radius: 20px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+  padding: 24px;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.review-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.review-content {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.review-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.review-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-weight: bold;
+  color: black;
+  background-color: #fff;
+}
