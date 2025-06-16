@@ -1,0 +1,63 @@
+.physics-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background: #000;
+  overflow: hidden;
+}
+
+.canvas-overlay canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.stats-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1a1a1a; /* dark card background */
+  padding: 24px 28px;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(255, 255, 255, 0.08); /* subtle light shadow */
+  z-index: 10;
+  width: 300px;
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+  color: #f0f0f0; /* light font for visibility */
+}
+
+.stats-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+  color: #4fc3f7; /* light blue accent */
+}
+
+.stats-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  color: #e0e0e0;
+}
+
+.stats-card li {
+  margin-bottom: 10px;
+}
+
+.stats-card button {
+  background: #4fc3f7;
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.stats-card button:hover {
+  background: #29b6f6;
+}
