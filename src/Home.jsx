@@ -1,5 +1,7 @@
 import React from 'react';
 import './Home.css';
+import "@fontsource/poppins/600.css"; // 600 is the font-weight you want
+
 
 const Home = ({ animate }) => {
   return (

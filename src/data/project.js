@@ -1,7 +1,7 @@
 const project = [
   {
     title: "OpenAI",
-    description: "OpenAI powers our smart job portal with advanced AI chatbots, helping users with queries, resumes, and job matching. It enhances user interaction with natural language understanding and real-time support for job seekers.",
+    description: "OpenAI powers our smart job portal with advanced AI chatbots, helping users with queries, resumes, and job matching. It enhances user interaction .",
     src: "./src/images/openai.png",
     link: "https://openai.com",
     color: "#1A237E"
