@@ -1,12 +1,12 @@
 import React from 'react';
 import Home from './Home.jsx';
-import UnifyFinancesShowcase from '../src/secondpage.jsx';
+import ScrollAnimation from './secondpage.jsx';
 function App() {
   return (
     <div>
       {/* <h1>hi</h1> */}
       <Home />
-      <UnifyFinancesShowcase/>
+      <ScrollAnimation/>
     </div>
   );
 }
