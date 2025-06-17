@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Home from './Home.jsx';
 import ScrollAnimation from './secondpage.jsx';
+
 function App() {
   const [loading, setLoading] = useState(true);
   const [showAnimation, setShowAnimation] = useState(false);
@@ -17,7 +18,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > window.innerHeight * 0.5) {
+      if (window.scrollY > window.innerHeight * 0.3) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -30,9 +31,15 @@ function App() {
 
   return (
     <div>
-      {/* <h1>hi</h1> */}
-      <Home />
-      {/* <ScrollAnimation/> */}
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          {!scrolled && <Home animate={showAnimation} />}
+          <StackedCards />
+          <ScrollAnimation />
+        </>
+      )}
     </div>
   );
 }

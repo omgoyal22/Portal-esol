@@ -1,12 +1,12 @@
 /* ✅ Import Poppins font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 /* Global reset */
 body,
 html {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   height: 100%;
 }
 
@@ -59,40 +59,82 @@ html {
   color: white;
 }
 
-/* 🔘 Auth buttons */
+/* 🔘 Main Navigation */
+.main-nav {
+  display: flex;
+  gap: 2rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.main-nav button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #D1D5DB;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.main-nav button:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Auth buttons container */
 .auth-buttons {
   display: flex;
   gap: 1rem;
   position: relative;
 }
 
-.auth-buttons button {
-  background: none;
-  border: none;
+/* Login/Signup buttons */
+.login, .signup {
   font-size: 16px;
-  color: #D1D5DB;
-  margin-left: 20px;
   cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.login {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.login:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
 }
 
 .signup {
   background: white;
-  color: red;
-  padding: 8px 16px;
-  border-radius: 10px;
-  font-weight: bold;
+  color: #111;
+  border: 1px solid white;
 }
 
-/* 🔽 Dropdown for user type */
-.dropdown-wrapper {
+.signup:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Dropdown containers */
+.auth-dropdown-container {
   position: relative;
+  display: inline-block;
 }
 
-.dropdown {
+/* Dropdown menu */
+.auth-dropdown {
   position: absolute;
-  top: 2.5rem;
+  top: 100%;
   right: 0;
-  background: #ffffff;
+  background: white;
   color: #000;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -100,18 +142,23 @@ html {
   display: flex;
   flex-direction: column;
   min-width: 140px;
+  margin-top: 8px;
+  overflow: hidden;
 }
 
-.dropdown button {
-  padding: 0.5rem 1rem;
+.dropdown-option {
+  padding: 0.75rem 1rem;
   border: none;
   background: none;
   text-align: left;
   cursor: pointer;
+  color: #333;
+  font-size: 14px;
+  transition: background 0.2s ease;
 }
 
-.dropdown button:hover {
-  background-color: #f3f3f3;
+.dropdown-option:hover {
+  background-color: #f3f4f6;
 }
 
 /* 🔷 Content at bottom-left */
@@ -132,33 +179,14 @@ html {
   font-size: 56px;
   font-weight: bold;
   margin: 0;
+  color: white;
 }
 
 .content p {
   font-size: 22px;
   margin-top: 10px;
   margin-bottom: 24px;
-}
-
-/* 🎯 Store button (optional) */
-.store-buttons {
-  display: flex;
-  gap: 20px;
-}
-
-.store {
-  background: white;
-  color: black;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 12px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.store.apple,
-.store.google {
-  font-family: 'Arial', sans-serif;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* 🔄 Animations */

@@ -172,7 +172,7 @@ const FinalText = ({ progress, totalCards }) => {
           textAlign: 'center'
         }}
       >
-        <h1 style={{
+        {/* <h1 style={{
           color: 'white',
           fontSize: '3rem',
           fontWeight: '800',
@@ -192,7 +192,7 @@ const FinalText = ({ progress, totalCards }) => {
           fontWeight: '300'
         }}>
           Building the future together
-        </p>
+        </p> */}
       </motion.div>
 
       <style jsx>{`
