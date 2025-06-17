@@ -16,19 +16,14 @@ const Navbar = () => {
           <button className="nav-button">Products</button>
         </nav>
        
-        {/* <div className="navbar-auth">
+        <div className="navbar-auth">
           <button className="auth-button login">Login</button>
           <button className="auth-button signup">Sign Up</button>
-        </div> */}
+        </div>
       </div>
     </header>
   );
 };
 
 export default Navbar;
-
-
-
-
-
 
