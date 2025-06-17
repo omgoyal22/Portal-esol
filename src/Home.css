@@ -1,8 +1,12 @@
+/* ✅ Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Global reset */
 body,
 html {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
   height: 100%;
 }
 
@@ -53,97 +57,7 @@ html {
 }
 
 
-.homepage {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  /* background: linear-gradient(135deg, #ff758c, #ff7eb3, #feb47b); */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 0;
-}
-
-/* Initial hidden states */
-.bg-video,
-.header,
-.content {
-  opacity: 0;
-  transform: translateY(50px);
-}
-
-/* Animation container */
-.page-fade-in {
-  animation: pageFade 0.5s ease-in forwards;
-}
-
-@keyframes pageFade {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Video fades in */
-.video-fade-in {
-  animation: videoFadeIn 1.2s ease-in-out forwards;
-  animation-delay: 0.3s;
-}
-
-@keyframes videoFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Header fades in next */
-.header-fade-in {
-  animation: headerFade 1s ease-in-out forwards;
-  animation-delay: 1.2s;
-}
-
-@keyframes headerFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Text appears last with delay */
-.text-fade-in {
-  animation: textFade 1s ease-in-out forwards;
-  animation-delay: 2s;
-}
-
-@keyframes textFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Fade-in effect when Home appears */
-.fade-in {
-  animation: fadeSlideIn 1.2s ease-out forwards;
-  opacity: 0;
-  transform: translateY(50px);
-}
-
-@keyframes fadeSlideIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Optional: smooth transitions for content */
-.content h1, .content p {
-  transition: all 0.8s ease-in-out;
-}
-
-🔥 Video background
+/* 🔥 Background video */
 .bg-video {
   position: fixed;
   top: 0;
@@ -152,7 +66,33 @@ html {
   height: 100vh;
   object-fit: cover;
   z-index: -1;
-  /* filter: brightness(0.4); Dim video for readability */
+  opacity: 1;
+}
+
+/* 🔷 Page container */
+.homepage {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3, #feb47b);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+/* 🔥 Video background */
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.4); /* Dim video for readability */
 }
 
 .header {
@@ -162,75 +102,184 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: #D1D5DB;
   font-size: 22px;
   padding: 0 32px;
   z-index: 1;
+  opacity: 0;
+  transform: translateY(50px);
 }
 
-.auth-buttons button {
+/* ✅ Logo font */
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  color: white;
+}
+
+/* 🔘 Main Navigation */
+.main-nav {
+  display: flex;
+  gap: 2rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.main-nav button {
   background: none;
   border: none;
   font-size: 16px;
-  color: white;
-  margin-left: 20px;
+  color: #D1D5DB;
   cursor: pointer;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.main-nav button:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Auth buttons container */
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Login/Signup buttons */
+.login, .signup {
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.login {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.login:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
 }
 
 .signup {
   background: white;
-  color: red;
-  padding: 8px 16px;
-  border-radius: 10px;
-  font-weight: bold;
+  color: #111;
+  border: 1px solid white;
 }
 
+.animated-coins {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 1000px;
+  z-index: 1;
+}
 
+.coin {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffdbdb, #ff4b4b);
+  position: absolute;
+  animation: spinCoin 3s linear infinite;
+  opacity: 0.8;
+}
 
-
-
-
+@keyframes spinCoin {
+  0% {
+    transform: translateZ(0) rotateX(0deg);
+  }
+  100% {
+    transform: translateZ(-500px) rotateX(360deg);
+  }
+}
 
 .content {
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
   text-align: left;
   z-index: 1;
   max-width: 600px;
-  padding: 20px;
-  color: white;
-  position: relative;
+  padding: 40px;
+  color: #D1D5DB;
+  opacity: 0;
+  transform: translateY(50px);
 }
 
 .content h1 {
   font-size: 56px;
   font-weight: bold;
   margin: 0;
+  color: white;
 }
 
 .content p {
   font-size: 22px;
   margin-top: 10px;
   margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.store-buttons {
-  display: flex;
-  gap: 20px;
+/* 🔄 Animations */
+.video-fade-in {
+  animation: videoFadeIn 1.2s ease-in-out forwards;
+  animation-delay: 0.3s;
 }
 
-.store {
-  background: white;
-  color: black;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 12px;
-  font-weight: bold;
-  cursor: pointer;
+.header-fade-in {
+  animation: headerFade 1s ease-in-out forwards;
+  animation-delay: 1.2s;
 }
 
-.store.apple {
-  font-family: 'Arial', sans-serif;
+.text-fade-in {
+  animation: textFade 1s ease-in-out forwards;
+  animation-delay: 2s;
 }
 
-.store.google {
-  font-family: 'Arial', sans-serif;
+.fade-in {
+  animation: fadeSlideIn 1.2s ease-out forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* 🎞 Keyframes */
+@keyframes videoFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes headerFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes textFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
